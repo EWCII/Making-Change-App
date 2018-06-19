@@ -1,0 +1,27 @@
+﻿@model MakingChangeApp.Models.RegisterViewModel
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-signup" }))
+{
+    @Html.AntiForgeryToken()
+
+    <label for="fullname">Full Name</label>
+    @Html.EditorFor(model => model.Full_Name, new { htmlAttributes = new { @class = "form-styling" } })
+    <label for="fullname">Address</label>
+    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-styling" } })
+    <label for="address">Phone Number</label>
+    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-styling" } })
+    <label for="fullname">Age</label>
+    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-styling" } })
+    <label for="email">Email</label>
+    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-styling" } })
+    <label for="password">Password</label>
+    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-styling" } })
+    <label for="confirmpassword">Confirm password</label>
+    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-styling" } })
+    <a onclick="submitRegister()" class="btn-signup">Sign Up</a>
+}
+<script type="text/javascript">
+    function submitRegister() {
+        $('.form-signup').submit()
+    }
+</script>

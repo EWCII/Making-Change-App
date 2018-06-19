@@ -29,5 +29,6 @@ namespace MakingChangeApp.Models
         {
             return new ApplicationDbContext();
         }
+        public string Address { get; set; }
     }
 }

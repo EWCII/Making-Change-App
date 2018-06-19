@@ -1,17 +1,53 @@
-﻿@{
+﻿@model MakingChangeApp.Models.ContactViewModel
+
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<script src="~/Scripts/MCSignin.js"></script>
+<div class="container frame-contact">
+    <div class="frame">
+        <div class="nav">
+            <ul id="signage" class="links">
+                <li class="signin-active"><a class="btn">Send Us A Message</a></li>
+            </ul>
+        </div>
+        <div ng-app ng-init="checked = false">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "form-signin" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <label for="fullname">Full Name</label>
+                @Html.EditorFor(model => model.FromName, new { htmlAttributes = new { @class = "form-styling", placeholder = Html.DisplayNameFor(m => m.FromName) } })
+                <label for="email">Email</label>
+                @Html.EditorFor(model => model.FromEmail, new { htmlAttributes = new { @class = "form-styling", placeholder = Html.DisplayNameFor(m => m.FromEmail) } })
+                <label for="body">Message</label>
+                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-styling", placeholder = Html.DisplayNameFor(m => m.Body) } })
+                <div class="btn-animate">
+                    <a onclick="submitContact()" class="btn-signin">Send</a>
+                </div>
+            }
+            <script type="text/javascript">
+                function submitContact() {
+                    $('.form-signin').submit()
+                }
+
+            </script>
+
+            <div class="success">
+            </div>
+          </div>
+     </div>
+</div>
+
+    @*<div>
+        <div class="cover-photo"></div>
+        <div class="profile-photo"></div>
+        <h1 class="welcome"></h1>
+    </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

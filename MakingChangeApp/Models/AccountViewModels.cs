@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MakingChangeApp.Models
@@ -59,7 +60,7 @@ namespace MakingChangeApp.Models
         public string Password { get; set; }
 
         [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
+        public string checkbox { get; set; }
     }
 
     public class RegisterViewModel
@@ -79,6 +80,12 @@ namespace MakingChangeApp.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string Full_Name { get; set; }
+        public Nullable<int> Age { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

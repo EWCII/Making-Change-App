@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Savings Tool";
+}
+<link href="~/Content/default.css" rel="stylesheet" />
+<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
+<script>
+    var question = prompt("If SAVING type 'saving', if PAYING OFF DEBT type 'debt'.")
+    {
+        if (question == "saving") {
+            var saved = prompt("Enter amount already saved");
+            var rate = prompt("Enter your monthly interest rate");
+            var a = ((rate * .01) + 1);
+            var desiredSaved = prompt("Enter your desired savings");
+            var goal = (desiredSaved - saved);
+            var estimate1 = (goal / (a * 12));
+            var estimate3 = (goal / (a * 36));
+            var estimate7 = (goal / (a * 84));
+            var estimate10 = (goal / (a * 120));
+            var estimat1 = Math.round(estimate1, 2);
+            var estimat3 = Math.round(estimate3, 2);
+            var estimat7 = Math.round(estimate7, 2);
+            var estimat10 = Math.round(estimate10, 2);
+
+            document.write("You will reach you goal of $" + desiredSaved + " in 1 year if you contribute $" + estimat1 + " a month! <p> You will reach you goal of $" + desiredSaved + " in 3 years if you contribute $" + estimat3 + " a month!</p><p>You will reach you goal of $" + desiredSaved + " in 7 years if you contribute $" + estimat7 + " a month!</p><p>You will reach you goal of $" + desiredSaved + " in 10 years if you contribute $" + estimat10 + " a month!</p>");
+        }
+        else if (question == "debt") {
+            var amount = prompt("Enter the total amount owed");
+            var irate = prompt("Enter your monthly interest rate");
+            var b = ((irate * .01) + 1);
+            var payment = prompt("Enter the minimum payment");
+            var payoff1 = ((amount * b) / payment)
+            var payoff2 = ((amount * b) / 193)
+            var payof1 = Math.round(payoff1, 2)
+            var payof2 = Math.round(payoff2, 2)
+
+            document.write("Your loan will be paid in full in " + payof1 + " payments if you contribute the minimum payment of $" + payment + ". <p>Your loan will be paid in full in " + payof2 + " payments if you contribute the national average loan payment of $193.</p>");
+        }
+        else {
+            document.write("<h1>Invalid input!</h1><p>");
+        }
+    }
+</script>
+<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
+<div style="background-color: #7f7d71; width: 190px; border: 25px solid #1E3227; padding: 18px; margin: 25px; float: left;">
+    <center>
+        <div id="savings_tool">
+            <a href="~/Home/SavingsTool">
+                <button><h2>Savings Tool</h2></button>
+            </a>
+        </div>
+    </center>
+</div>
+
+<div id="add_event" title="Add to Calendar" class="addeventatc" style="background-color: #7f7d71; width: 190px; height: 165px; border: 25px solid #1E3227; padding: 25px; margin: 25px; float: right;">
+    <center>
+        <h2>Add Event</h2>
+    </center>
+</div>
+
+
